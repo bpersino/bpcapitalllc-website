@@ -81,10 +81,8 @@ export const approach = {
 
 export const contact = {
   title: "Contact",
-  lead: "For legitimate inquiries related to the firm, reach us by email or the form below.",
+  lead: "For legitimate inquiries related to the firm, reach us by email.",
   email: site.email,
-  /** Optional Formspree endpoint — leave empty to use mailto fallback. */
-  formspreeEndpoint: "",
   calendlyUrl: "",
 } as const;
 

@@ -25,7 +25,6 @@ All site copy lives in [`src/lib/content.ts`](src/lib/content.ts):
 
 - Company details, hero, about, approach pillars
 - Contact email
-- Optional `formspreeEndpoint` (leave empty for mailto fallback)
 - Optional `calendlyUrl`
 - Legal disclaimer text
 

@@ -2,20 +2,44 @@
 
 import { useState, type FormEvent } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { CheckCircle2, Loader2, Mail, Send } from "lucide-react";
+import { CheckCircle2, Copy, ExternalLink, Loader2, Mail, Send } from "lucide-react";
 import { Section } from "@/components/Section";
 import { contact, site } from "@/lib/content";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
+/** Build a mailto URL and try to open the OS email client. */
+function buildMailto(name: string, email: string, message: string) {
+  const subject = encodeURIComponent(`Inquiry from ${name} — ${site.name}`);
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+  return `mailto:${contact.email}?subject=${subject}&body=${body}`;
+}
+
+/**
+ * Edge/Chrome on macOS often ignore window.location mailto navigations.
+ * A user-gesture click on a real <a href="mailto:…"> is more reliable.
+ */
+function openMailto(href: string) {
+  const anchor = document.createElement("a");
+  anchor.href = href;
+  anchor.rel = "noopener";
+  anchor.style.display = "none";
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+}
+
 export function Contact() {
   const reduceMotion = useReducedMotion();
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
+  const [mailtoHref, setMailtoHref] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError(null);
+    setCopied(false);
     setStatus("submitting");
 
     const form = event.currentTarget;
@@ -38,19 +62,29 @@ export function Contact() {
           body: data,
         });
         if (!res.ok) throw new Error("Form submission failed");
+        setMailtoHref(null);
         setStatus("success");
         form.reset();
         return;
       }
 
-      const subject = encodeURIComponent(`Inquiry from ${name} — ${site.name}`);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-      window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
+      const href = buildMailto(name, email, message);
+      setMailtoHref(href);
+      openMailto(href);
       setStatus("success");
-      form.reset();
+      // Keep field values so the visitor can retry via the fallback link.
     } catch {
       setError("Something went wrong. Please email us directly.");
       setStatus("error");
+    }
+  }
+
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(contact.email);
+      setCopied(true);
+    } catch {
+      setCopied(false);
     }
   }
 
@@ -141,15 +175,35 @@ export function Contact() {
           ) : null}
 
           {status === "success" ? (
-            <p
-              role="status"
-              className="mt-4 flex items-center gap-2 text-sm text-accent"
-            >
-              <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden="true" />
-              {contact.formspreeEndpoint
-                ? "Message sent. We’ll get back to you soon."
-                : "Opening your email client…"}
-            </p>
+            <div role="status" className="mt-4 space-y-3 border border-accent/25 bg-accent-soft/40 p-4 text-sm text-fg-muted">
+              <p className="flex items-start gap-2 text-accent">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                <span>
+                  {contact.formspreeEndpoint
+                    ? "Message sent. We’ll get back to you soon."
+                    : "If your email app didn’t open, use the button below (some browsers block this automatically)."}
+                </span>
+              </p>
+              {!contact.formspreeEndpoint && mailtoHref ? (
+                <div className="flex flex-col gap-2 sm:flex-row">
+                  <a
+                    href={mailtoHref}
+                    className="inline-flex items-center justify-center gap-2 border border-accent/40 bg-bg px-4 py-2.5 text-sm font-semibold text-accent transition-colors hover:border-accent hover:bg-accent/10"
+                  >
+                    Open email app
+                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                  <button
+                    type="button"
+                    onClick={copyEmail}
+                    className="inline-flex items-center justify-center gap-2 border border-line px-4 py-2.5 text-sm font-medium text-fg transition-colors hover:border-line-strong"
+                  >
+                    <Copy className="h-4 w-4" aria-hidden="true" />
+                    {copied ? "Email copied" : "Copy email address"}
+                  </button>
+                </div>
+              ) : null}
+            </div>
           ) : null}
 
           <button
@@ -160,11 +214,11 @@ export function Contact() {
             {status === "submitting" ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-                Sending…
+                Preparing…
               </>
             ) : (
               <>
-                Send message
+                {contact.formspreeEndpoint ? "Send message" : "Compose email"}
                 <Send className="h-4 w-4" aria-hidden="true" />
               </>
             )}

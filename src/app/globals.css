@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #06090f;
+  --bg-elevated: #0b1220;
+  --bg-panel: #0f172a;
+  --fg: #e8eef8;
+  --fg-muted: #94a3b8;
+  --fg-subtle: #64748b;
+  --accent: #22d3a6;
+  --accent-soft: rgba(34, 211, 166, 0.14);
+  --accent-blue: #38bdf8;
+  --line: rgba(148, 163, 184, 0.16);
+  --line-strong: rgba(148, 163, 184, 0.28);
+  --danger-soft: rgba(248, 113, 113, 0.12);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-panel: var(--bg-panel);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-blue: var(--accent-blue);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --font-display: var(--font-syne);
+  --font-sans: var(--font-source-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+  color: var(--fg);
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, black 20%, transparent 75%);
+}
+
+.hero-glow {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(34, 211, 166, 0.16), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 85% 20%, rgba(56, 189, 248, 0.1), transparent 50%),
+    radial-gradient(ellipse 40% 30% at 10% 40%, rgba(34, 211, 166, 0.06), transparent 45%);
+}
+
+.section-pad {
+  padding-block: clamp(4.5rem, 10vw, 7.5rem);
+}

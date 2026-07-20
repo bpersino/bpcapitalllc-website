@@ -1,6 +1,12 @@
 /**
  * Site content for BP Capital LLC.
  * Edit this file to update copy without touching layout components.
+ *
+ * Wording notes (not tax advice):
+ * - Do not claim “Trader Tax Status,” IRS qualification, or tax results on this site.
+ * - TTS is a facts-and-circumstances determination based on actual trading activity
+ *   (see IRS Topic 429). This site should accurately describe the business only.
+ * - Prefer honest description of tools (e.g. Composer) over overstated “quant lab” claims.
  */
 
 export const site = {
@@ -13,9 +19,9 @@ export const site = {
   location: "Texas, USA",
   formed: "June 2026",
   entity: "Texas single-member LLC",
-  tagline: "Proprietary Algorithmic Trading",
+  tagline: "Proprietary Securities Trading",
   description:
-    "BP Capital LLC develops and operates automated quantitative trading strategies for equities and ETFs, trading solely for its own account.",
+    "BP Capital LLC is a Texas proprietary trading company that designs and operates systematic equity and ETF strategies for its own account, with frequent position changes oriented to short-term market movements.",
 } as const;
 
 export const nav = [
@@ -26,54 +32,56 @@ export const nav = [
 
 export const hero = {
   brand: "BP Capital",
-  headline: "Proprietary Algorithmic Trading",
+  headline: "Proprietary Securities Trading",
   subheadline:
-    "Automated quantitative strategies for equities and ETFs — built, tested, and executed with our own capital.",
-  primaryCta: { label: "Contact Us", href: "#contact" },
+    "Systematic equity and ETF strategies traded solely for our own account — with frequent position changes oriented to short-term market movements.",
+  primaryCta: { label: "Contact", href: "#contact" },
   secondaryCta: { label: "Our Approach", href: "#approach" },
 } as const;
 
 export const about = {
   title: "About",
-  lead: "A Texas proprietary trading firm focused on systematic, data-driven markets participation.",
+  lead: "A Texas single-member LLC engaged in ongoing, systematic securities trading for its own account.",
   paragraphs: [
-    "BP Capital LLC is a single-member limited liability company that develops and operates automated quantitative trading strategies. We trade equities and ETFs solely for our own account, with positions that can change daily as markets evolve.",
-    "We do not manage client money, solicit outside capital, or act as an investment advisor. Our work is internal research, engineering, and execution — applied exclusively to firm capital.",
+    "BP Capital LLC buys and sells equities and ETFs solely with firm capital. Our trading is organized as a continuous business activity: we design, test, and operate rules-based strategies intended to profit from short-term price movements—not from long-term buy-and-hold investing, dividends, or managing outside capital.",
+    "We build and execute strategies on Composer (composer.trade), an automated brokerage trading platform. Positions can and often do change on trading days as signals and allocations update. We do not solicit or manage investments from the public, do not provide investment advice, and are not a registered investment advisor, broker-dealer, or hedge fund.",
   ],
   facts: [
     { label: "Entity", value: "Texas single-member LLC" },
-    { label: "Focus", value: "Equities & ETFs" },
+    { label: "Instruments", value: "Equities & ETFs" },
     { label: "Capital", value: "Proprietary only" },
+    { label: "Orientation", value: "Short-term / frequent" },
+    { label: "Platform", value: "Composer" },
     { label: "Formed", value: "June 2026" },
   ],
 } as const;
 
 export const approach = {
   title: "Our Approach",
-  lead: "Systems over discretion. Evidence over narrative.",
+  lead: "Repeatable process, frequent trading, own capital only.",
   items: [
     {
-      title: "Algorithmic Development",
+      title: "Strategy Design",
       description:
-        "We design and refine trading algorithms that encode rules, signals, and constraints into repeatable software systems.",
+        "We define rules-based strategies with explicit entry, exit, allocation, and rebalance logic that can be applied consistently across trading days.",
       icon: "code" as const,
     },
     {
-      title: "Quantitative Research",
+      title: "Ongoing Review",
       description:
-        "Ideas are evaluated against historical and live market data, with an emphasis on robustness, costs, and regime awareness.",
+        "We monitor strategy behavior and market conditions on an ongoing basis and refine rules when results, costs, or regimes warrant changes.",
       icon: "chart" as const,
     },
     {
-      title: "Risk Management",
+      title: "Risk Controls",
       description:
-        "Exposure limits, position sizing, and drawdown controls are first-class components of every strategy we run.",
+        "Position sizing, exposure limits, and drawdown-aware constraints are part of how strategies are specified and run—not an afterthought.",
       icon: "shield" as const,
     },
     {
-      title: "Systematic Execution",
+      title: "Automated Execution",
       description:
-        "Orders are generated and routed by automated pipelines, reducing operational friction and emotional interference.",
+        "Orders are submitted through Composer’s automated execution so trades follow the strategy rules with less manual, discretionary intervention.",
       icon: "zap" as const,
     },
   ],
@@ -81,10 +89,10 @@ export const approach = {
 
 export const contact = {
   title: "Contact",
-  lead: "For legitimate inquiries related to the firm, reach us by email.",
+  lead: "For firm-related inquiries, reach us by email.",
   email: site.email,
   calendlyUrl: "",
 } as const;
 
 export const disclaimer =
-  "BP Capital LLC is a proprietary trading firm that trades solely for its own account. We do not solicit or manage investments from the public, do not provide investment advice, and are not a registered investment advisor, broker-dealer, or hedge fund. Past performance is not indicative of future results. Trading involves substantial risk of loss.";
+  "BP Capital LLC is a proprietary trading company that trades solely for its own account. We do not solicit or manage investments from the public, do not provide investment advice, and are not a registered investment advisor, broker-dealer, or hedge fund. Past performance is not indicative of future results. Trading involves substantial risk of loss. This website is for general information only and does not constitute tax, legal, or investment advice. Whether trading activity constitutes a trade or business for U.S. federal income tax purposes depends on the facts and circumstances of that activity.";

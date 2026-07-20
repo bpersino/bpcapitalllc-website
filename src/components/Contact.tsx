@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Check, Copy, Mail } from "lucide-react";
 import { Section } from "@/components/Section";
@@ -9,11 +9,16 @@ import { contact, site } from "@/lib/content";
 export function Contact() {
   const [copied, setCopied] = useState(false);
 
+  useEffect(() => {
+    if (!copied) return;
+    const timer = setTimeout(() => setCopied(false), 2000);
+    return () => clearTimeout(timer);
+  }, [copied]);
+
   async function copyEmail() {
     try {
       await navigator.clipboard.writeText(contact.email);
       setCopied(true);
-      window.setTimeout(() => setCopied(false), 2000);
     } catch {
       setCopied(false);
     }

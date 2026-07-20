@@ -11,8 +11,8 @@ export function Contact() {
   return (
     <Section id="contact" title={contact.title} lead={contact.lead} eyebrow="Get in touch">
       <motion.div
-        initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={reduceMotion ? false : { y: 16 }}
+        whileInView={{ y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.5 }}
         className="max-w-xl space-y-6"

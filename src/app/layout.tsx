@@ -20,7 +20,7 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Proprietary Algorithmic Trading`,
+    default: `${site.name} — ${site.tagline}`,
     template: `%s · ${site.shortName}`,
   },
   description: site.description,
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   keywords: [
     "BP Capital LLC",
     "proprietary trading",
-    "algorithmic trading",
-    "quantitative trading",
+    "securities trading",
+    "systematic trading",
     "Texas LLC",
   ],
   openGraph: {
@@ -39,12 +39,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — Proprietary Algorithmic Trading`,
+    title: `${site.name} — ${site.tagline}`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Proprietary Algorithmic Trading`,
+    title: `${site.name} — ${site.tagline}`,
     description: site.description,
   },
   robots: {

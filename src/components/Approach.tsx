@@ -24,8 +24,8 @@ export function Approach() {
             <motion.li
               key={item.title}
               className="group border border-line bg-bg-elevated/60 p-6 transition-colors hover:border-accent/35 hover:bg-bg-panel/80 sm:p-7"
-              initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={reduceMotion ? false : { y: 18 }}
+              whileInView={{ y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.45, delay: reduceMotion ? 0 : index * 0.06 }}
             >

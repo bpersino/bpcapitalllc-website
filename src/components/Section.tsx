@@ -18,8 +18,8 @@ export function Section({ id, title, lead, children, eyebrow }: SectionProps) {
     <section id={id} aria-labelledby={`${id}-heading`} className="section-pad scroll-mt-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={reduceMotion ? false : { y: 20 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >

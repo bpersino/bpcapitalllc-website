@@ -24,17 +24,21 @@ export function Hero() {
         <motion.div
           aria-hidden="true"
           className="pointer-events-none absolute left-1/2 top-[18%] h-px w-[min(70vw,42rem)] -translate-x-1/2 bg-gradient-to-r from-transparent via-accent/50 to-transparent"
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
           transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
         />
       ) : null}
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-8">
+        {/*
+          Motion uses transform only (no opacity:0) so the hero stays readable
+          even if JS animation never runs.
+        */}
         <motion.p
           className="font-display text-sm font-semibold uppercase tracking-[0.28em] text-accent sm:text-base"
-          initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={reduceMotion ? false : { y: 12 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
         >
           {hero.brand}
@@ -43,8 +47,8 @@ export function Hero() {
         <motion.h1
           id="hero-heading"
           className="mt-5 max-w-4xl font-display text-[clamp(2.6rem,8vw,5.5rem)] font-bold leading-[0.95] tracking-tight text-fg"
-          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={reduceMotion ? false : { y: 18 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.7, delay: 0.12 }}
         >
           {hero.headline}
@@ -52,8 +56,8 @@ export function Hero() {
 
         <motion.p
           className="mt-6 max-w-xl text-lg leading-relaxed text-fg-muted sm:text-xl"
-          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={reduceMotion ? false : { y: 16 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.65, delay: 0.22 }}
         >
           {hero.subheadline}
@@ -61,8 +65,8 @@ export function Hero() {
 
         <motion.div
           className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
-          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={reduceMotion ? false : { y: 14 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.6, delay: 0.32 }}
         >
           <a

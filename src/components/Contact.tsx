@@ -1,13 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Check, Copy, Mail } from "lucide-react";
 import { Section } from "@/components/Section";
 import { contact, site } from "@/lib/content";
 
 export function Contact() {
-  const reduceMotion = useReducedMotion();
   const [copied, setCopied] = useState(false);
 
   async function copyEmail() {
@@ -23,7 +22,7 @@ export function Contact() {
   return (
     <Section id="contact" title={contact.title} lead={contact.lead} eyebrow="Get in touch">
       <motion.div
-        initial={reduceMotion ? false : { y: 16 }}
+        initial={false}
         whileInView={{ y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.5 }}

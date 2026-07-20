@@ -76,6 +76,29 @@ body {
     radial-gradient(ellipse 40% 30% at 10% 40%, rgba(34, 211, 166, 0.06), transparent 45%);
 }
 
+.hero-accent-line {
+  transform: translateX(-50%) scaleX(1);
+  transform-origin: center;
+  animation: hero-line-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hero-line-in {
+  from {
+    transform: translateX(-50%) scaleX(0);
+    opacity: 0.35;
+  }
+  to {
+    transform: translateX(-50%) scaleX(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-accent-line {
+    animation: none;
+  }
+}
+
 .section-pad {
   padding-block: clamp(4.5rem, 10vw, 7.5rem);
 }

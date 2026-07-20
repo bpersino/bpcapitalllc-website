@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
 type SectionProps = {
@@ -12,13 +12,11 @@ type SectionProps = {
 };
 
 export function Section({ id, title, lead, children, eyebrow }: SectionProps) {
-  const reduceMotion = useReducedMotion();
-
   return (
     <section id={id} aria-labelledby={`${id}-heading`} className="section-pad scroll-mt-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <motion.div
-          initial={reduceMotion ? false : { y: 20 }}
+          initial={false}
           whileInView={{ y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}

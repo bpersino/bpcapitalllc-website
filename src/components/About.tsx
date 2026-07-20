@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Section } from "@/components/Section";
 import { about } from "@/lib/content";
 
@@ -36,14 +36,12 @@ function enrichCopy(text: string): ReactNode {
 }
 
 export function About() {
-  const reduceMotion = useReducedMotion();
-
   return (
     <Section id="about" title={about.title} lead={about.lead} eyebrow="Who we are">
       <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
         <motion.div
           className="space-y-5 text-base leading-relaxed text-fg-muted sm:text-lg"
-          initial={reduceMotion ? false : { y: 16 }}
+          initial={false}
           whileInView={{ y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, delay: 0.05 }}
@@ -55,7 +53,7 @@ export function About() {
 
         <motion.dl
           className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2"
-          initial={reduceMotion ? false : { y: 16 }}
+          initial={false}
           whileInView={{ y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, delay: 0.12 }}

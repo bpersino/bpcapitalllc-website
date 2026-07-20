@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { BarChart3, Code2, Shield, Zap, type LucideIcon } from "lucide-react";
 import { Section } from "@/components/Section";
 import { approach } from "@/lib/content";
@@ -34,8 +34,6 @@ function withComposerLink(text: string): ReactNode {
 }
 
 export function Approach() {
-  const reduceMotion = useReducedMotion();
-
   return (
     <Section id="approach" title={approach.title} lead={approach.lead} eyebrow="How we work">
       <ul className="grid gap-4 sm:grid-cols-2 lg:gap-5">
@@ -45,10 +43,10 @@ export function Approach() {
             <motion.li
               key={item.title}
               className="group border border-line bg-bg-elevated/60 p-6 transition-colors hover:border-accent/35 hover:bg-bg-panel/80 sm:p-7"
-              initial={reduceMotion ? false : { y: 18 }}
+              initial={false}
               whileInView={{ y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.45, delay: reduceMotion ? 0 : index * 0.06 }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
             >
               <div className="flex h-10 w-10 items-center justify-center border border-accent/30 bg-accent-soft text-accent transition-colors group-hover:border-accent/50">
                 <Icon className="h-5 w-5" aria-hidden="true" />

@@ -1,10 +1,11 @@
 # BP Capital LLC Website
 
-Marketing site for **BP Capital LLC** (`bpcapitalllc.com`) — a Texas proprietary algorithmic trading firm.
+Marketing site for **BP Capital LLC** (`bpcapitalllc.com`) — a Texas proprietary securities trading firm.
 
 ## Stack
 
-- Next.js (App Router) + TypeScript
+- **Node.js 24** (Active LTS) — see `.nvmrc`
+- **Next.js 16** (App Router, current LTS line) + React 19 + TypeScript 5.9
 - Tailwind CSS v4
 - Framer Motion
 - Lucide React
@@ -13,6 +14,7 @@ Marketing site for **BP Capital LLC** (`bpcapitalllc.com`) — a Texas proprieta
 ## Development
 
 ```bash
+nvm use   # Node 24 LTS
 npm install
 npm run dev
 ```
@@ -49,7 +51,7 @@ You already use Cloudflare for DNS — **Cloudflare Pages** is free and keeps ev
    - **Build command:** `npm run build`
    - **Build output directory:** `out`
    - **Root directory:** `/` (default)
-   - **Node version:** `22` (or `20`) — set under Environment variables → `NODE_VERSION=22`
+   - **Node version:** `24` — set under Environment variables → `NODE_VERSION=24`
 4. Deploy
 
 ### Custom domain (`bpcapitalllc.com`)

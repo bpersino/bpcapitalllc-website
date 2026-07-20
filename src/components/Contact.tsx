@@ -1,12 +1,24 @@
 "use client";
 
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Mail } from "lucide-react";
+import { Check, Copy, Mail } from "lucide-react";
 import { Section } from "@/components/Section";
 import { contact, site } from "@/lib/content";
 
 export function Contact() {
   const reduceMotion = useReducedMotion();
+  const [copied, setCopied] = useState(false);
+
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(contact.email);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
+  }
 
   return (
     <Section id="contact" title={contact.title} lead={contact.lead} eyebrow="Get in touch">
@@ -17,22 +29,42 @@ export function Contact() {
         transition={{ duration: 0.5 }}
         className="max-w-xl space-y-6"
       >
-        <a
-          href={`mailto:${contact.email}`}
-          className="group flex items-start gap-4 border border-line bg-bg-elevated/70 p-5 transition-colors hover:border-accent/40"
-        >
+        <div className="flex items-start gap-4 border border-line bg-bg-elevated/70 p-5 transition-colors hover:border-accent/40">
           <span className="grid h-10 w-10 shrink-0 place-items-center border border-accent/30 bg-accent-soft text-accent">
             <Mail className="h-5 w-5" aria-hidden="true" />
           </span>
-          <span>
+          <div className="min-w-0 flex-1">
             <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-fg-subtle">
               Email
             </span>
-            <span className="mt-1 block break-all font-medium text-fg group-hover:text-accent">
-              {contact.email}
-            </span>
-          </span>
-        </a>
+            <div className="mt-1 flex flex-wrap items-center gap-2">
+              <a
+                href={`mailto:${contact.email}`}
+                className="break-all font-medium text-fg transition-colors hover:text-accent"
+              >
+                {contact.email}
+              </a>
+              <button
+                type="button"
+                onClick={copyEmail}
+                className="inline-flex shrink-0 items-center gap-1.5 border border-line px-2.5 py-1 text-xs font-semibold text-fg-muted transition-colors hover:border-accent/40 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
+                aria-label={copied ? "Email copied" : `Copy ${contact.email}`}
+              >
+                {copied ? (
+                  <>
+                    <Check className="h-3.5 w-3.5" aria-hidden="true" />
+                    Copied
+                  </>
+                ) : (
+                  <>
+                    <Copy className="h-3.5 w-3.5" aria-hidden="true" />
+                    Copy
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
 
         <div className="border border-line bg-bg-elevated/40 p-5 text-sm leading-relaxed text-fg-muted">
           <p>

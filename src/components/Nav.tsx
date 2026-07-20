@@ -35,15 +35,17 @@ export function Nav() {
         <Logo />
 
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
-          {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-fg-muted transition-colors hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
-            >
-              {item.label}
-            </a>
-          ))}
+          {nav
+            .filter((item) => item.href !== "#contact")
+            .map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-sm font-medium text-fg-muted transition-colors hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
+              >
+                {item.label}
+              </a>
+            ))}
           <a
             href="#contact"
             className="border border-accent/40 bg-accent-soft px-4 py-2 text-sm font-semibold text-accent transition-colors hover:border-accent hover:bg-accent/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
@@ -70,22 +72,24 @@ export function Nav() {
           className="border-t border-line bg-bg/95 px-5 py-6 backdrop-blur-md md:hidden"
         >
           <nav aria-label="Mobile" className="flex flex-col gap-4">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="font-display text-2xl font-semibold text-fg"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
+            {nav
+              .filter((item) => item.href !== "#contact")
+              .map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="font-display text-2xl font-semibold text-fg"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
             <a
               href="#contact"
               className="mt-2 border border-accent/40 bg-accent-soft px-4 py-3 text-center text-sm font-semibold text-accent"
               onClick={() => setOpen(false)}
             >
-              Contact Us
+              Contact
             </a>
           </nav>
         </div>

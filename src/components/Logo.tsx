@@ -26,9 +26,12 @@ export function Logo({ className = "", href = "#top" }: LogoProps) {
   if (!href) return mark;
 
   return (
-    <Link href={href} className="group outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-accent/60">
+    <Link
+      href={href}
+      aria-label={site.name}
+      className="group outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-accent/60"
+    >
       {mark}
-      <span className="sr-only">{site.name}</span>
     </Link>
   );
 }

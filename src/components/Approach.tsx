@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { BarChart3, Code2, Shield, Zap, type LucideIcon } from "lucide-react";
 import { Section } from "@/components/Section";
@@ -11,6 +12,26 @@ const icons: Record<(typeof approach.items)[number]["icon"], LucideIcon> = {
   shield: Shield,
   zap: Zap,
 };
+
+function withComposerLink(text: string): ReactNode {
+  const marker = "Composer’s";
+  const idx = text.indexOf(marker);
+  if (idx === -1) return text;
+  return (
+    <>
+      {text.slice(0, idx)}
+      <a
+        href="https://www.composer.trade"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-accent-blue underline-offset-4 hover:underline"
+      >
+        Composer’s
+      </a>
+      {text.slice(idx + marker.length)}
+    </>
+  );
+}
 
 export function Approach() {
   const reduceMotion = useReducedMotion();
@@ -36,7 +57,7 @@ export function Approach() {
                 {item.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-fg-muted sm:text-base">
-                {item.description}
+                {withComposerLink(item.description)}
               </p>
             </motion.li>
           );

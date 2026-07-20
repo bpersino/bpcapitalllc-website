@@ -21,7 +21,7 @@ export const site = {
   entity: "Texas single-member LLC",
   tagline: "Proprietary Securities Trading",
   description:
-    "BP Capital LLC is a Texas proprietary trading company that designs and operates systematic equity and ETF strategies for its own account, with frequent position changes oriented to short-term market movements.",
+    "BP Capital LLC is a Texas proprietary trading company that designs and operates systematic equity and ETF strategies for its own account, seeking to profit from daily and other short-term market movements.",
 } as const;
 
 export const nav = [
@@ -34,7 +34,7 @@ export const hero = {
   brand: "BP Capital",
   headline: "Proprietary Securities Trading",
   subheadline:
-    "Systematic equity and ETF strategies traded solely for our own account — with frequent position changes oriented to short-term market movements.",
+    "Systematic equity and ETF strategies traded solely for our own account — seeking to profit from daily and other short-term market movements.",
   primaryCta: { label: "Contact", href: "#contact" },
   secondaryCta: { label: "Our Approach", href: "#approach" },
 } as const;
@@ -43,14 +43,14 @@ export const about = {
   title: "About",
   lead: "A Texas single-member LLC engaged in ongoing, systematic securities trading for its own account.",
   paragraphs: [
-    "BP Capital LLC buys and sells equities and ETFs solely with firm capital. Our trading is organized as a continuous business activity: we design, test, and operate rules-based strategies intended to profit from short-term price movements—not from long-term buy-and-hold investing, dividends, or managing outside capital.",
+    "BP Capital LLC buys and sells equities and ETFs solely with firm capital. Our trading is organized as a continuous business activity: we design, test, and operate rules-based strategies seeking to profit from daily and other short-term market movements—not from long-term buy-and-hold investing, dividends, or managing outside capital.",
     "We build and execute strategies on Composer (composer.trade), an automated brokerage trading platform. Positions can and often do change on trading days as signals and allocations update. We do not solicit or manage investments from the public, do not provide investment advice, and are not a registered investment advisor, broker-dealer, or hedge fund.",
   ],
   facts: [
     { label: "Entity", value: "Texas single-member LLC" },
     { label: "Instruments", value: "Equities & ETFs" },
     { label: "Capital", value: "Proprietary only" },
-    { label: "Orientation", value: "Short-term / frequent" },
+    { label: "Focus", value: "Short-term market moves" },
     { label: "Platform", value: "Composer" },
     { label: "Formed", value: "June 2026" },
   ],
@@ -58,7 +58,7 @@ export const about = {
 
 export const approach = {
   title: "Our Approach",
-  lead: "Repeatable process, frequent trading, own capital only.",
+  lead: "Repeatable process, short-term orientation, own capital only.",
   items: [
     {
       title: "Strategy Design",
